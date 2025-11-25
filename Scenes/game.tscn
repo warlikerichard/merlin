@@ -1,0 +1,79 @@
+[gd_scene load_steps=5 format=3 uid="uid://okf7fkgcm5qh"]
+
+[ext_resource type="Texture2D" uid="uid://b0mxmma5b8kld" path="res://icon.svg" id="1_ebmjs"]
+[ext_resource type="PackedScene" uid="uid://v8vbbsfivhyr" path="res://Scenes/player.tscn" id="2_qxrlw"]
+[ext_resource type="PackedScene" uid="uid://e6hdqv0tij85" path="res://Scenes/JumpableWall.tscn" id="3_wrm1d"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qxrlw"]
+size = Vector2(122, 122)
+
+[node name="game" type="Node2D"]
+
+[node name="Player" parent="." groups=["Player"] instance=ExtResource("2_qxrlw")]
+position = Vector2(410, -115)
+scale = Vector2(2.5, 2.5)
+wall_jump_force = 1200.0
+
+[node name="Camera2D" parent="Player" index="1"]
+zoom = Vector2(0.88, 0.88)
+position_smoothing_enabled = false
+position_smoothing_speed = 15.0
+
+[node name="Ground" type="StaticBody2D" parent="."]
+scale = Vector2(15.025223, 0.6284185)
+
+[node name="Sprite2D" type="Sprite2D" parent="Ground"]
+texture = ExtResource("1_ebmjs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
+position = Vector2(-1, -1)
+shape = SubResource("RectangleShape2D_qxrlw")
+
+[node name="Ground2" type="StaticBody2D" parent="."]
+position = Vector2(515, -1613)
+scale = Vector2(15.025223, 0.6284185)
+
+[node name="Sprite2D" type="Sprite2D" parent="Ground2"]
+texture = ExtResource("1_ebmjs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground2"]
+position = Vector2(-1, -1)
+shape = SubResource("RectangleShape2D_qxrlw")
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+energy = 0.2
+blend_mode = 1
+height = 0.21
+
+[node name="JumpableWall" parent="." instance=ExtResource("3_wrm1d")]
+position = Vector2(-782, -849)
+scale = Vector2(1, 2.4000003)
+
+[node name="CollisionShape2D" parent="JumpableWall" index="1"]
+scale = Vector2(1, 0.6333335)
+
+[node name="Area2D" parent="JumpableWall/CollisionShape2D" index="0"]
+position = Vector2(2, 84.33332)
+scale = Vector2(1, 0.54351056)
+
+[node name="CollisionShape2D2" parent="JumpableWall/CollisionShape2D/Area2D" index="0"]
+position = Vector2(-1, -249.09526)
+scale = Vector2(1.4400002, 1.4841824)
+
+[node name="JumpableWall2" parent="." instance=ExtResource("3_wrm1d")]
+position = Vector2(-454, -973)
+scale = Vector2(1, 2.039999)
+
+[node name="CollisionShape2D" parent="JumpableWall2" index="1"]
+scale = Vector2(1, 0.62745106)
+
+[node name="Area2D" parent="JumpableWall2/CollisionShape2D" index="0"]
+scale = Vector2(1, 0.6938427)
+
+[node name="CollisionShape2D2" parent="JumpableWall2/CollisionShape2D/Area2D" index="0"]
+position = Vector2(-1.5, -14.907991)
+scale = Vector2(1.4400002, 1.2702348)
+
+[editable path="Player"]
+[editable path="JumpableWall"]
+[editable path="JumpableWall2"]

@@ -1,0 +1,8 @@
+[gd_resource type="CanvasTexture" load_steps=3 format=3 uid="uid://ds6kh17uwtg22"]
+
+[ext_resource type="Texture2D" uid="uid://dttly8cehjs2x" path="res://Assets/Images/Spritesheets/Core/WallGrabRightDiffuse.png" id="1_25any"]
+[ext_resource type="Texture2D" uid="uid://bh5206wxbxdk7" path="res://Assets/Images/Spritesheets/Core/WallGrabRightNormals.png" id="2_metjv"]
+
+[resource]
+diffuse_texture = ExtResource("1_25any")
+normal_texture = ExtResource("2_metjv")
