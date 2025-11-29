@@ -40,8 +40,8 @@ var center : Node2D = Node2D.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	#if repeating_amount > 0:
-		
+	if repeating_amount > 0:
+		process_repeating()
 	
 	if preserve_spacing:
 		var average_pos := Vector2(0, 0)
@@ -69,6 +69,9 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	process_images_position()
+	
+	if repeating_amount > 0:
+		process_repeating()
 
 func process_images_position():
 	for i in range(len(images)):
@@ -82,3 +85,6 @@ func process_images_atmosphere():
 		var opacity := image.modulate.a
 		image.modulate = Color.SKY_BLUE/(pow(distance, 0.5))
 		image.modulate.a = opacity
+
+func process_repeating():
+	pass
