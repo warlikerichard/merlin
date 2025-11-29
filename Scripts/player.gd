@@ -5,9 +5,13 @@ class_name Player
 @export var AIR_SPEED = 400.0
 @export var JUMP_VELOCITY = -600.0
 @export var wall_jump_force := 1000.0
+@export var dexterity := 1
+@export var force := 1
+@export var charisma := 1
 var direction := 0.0
 var prev_direction := 0.0
 var just_pressed_jump := false
+var released_jump := false
 var is_wall_jumping := false
 var left_or_right_wall := 0
 
@@ -41,11 +45,9 @@ func handle_animations():
 		
 	#Jump and fall
 	elif not is_on_floor() and not is_wall_jumping:
-		if velocity.x < 0:
-			prev_direction = -1.0
+		if prev_direction < 0:
 			animations.flip_h = true
-		elif velocity.x > 0:
-			prev_direction = 1.0
+		elif prev_direction > 0:
 			animations.flip_h = false
 		
 		if just_pressed_jump:
@@ -69,6 +71,11 @@ func handle_animations():
 		
 #Handles the movement
 func handle_movement(delta: float):
+	if velocity.x < 0:
+		prev_direction = -1.0
+	elif velocity.x > 0:
+		prev_direction = 1.0
+	
 	# Add the gravity.
 	if not is_on_floor() and not is_wall_jumping:
 		velocity += get_gravity() * delta
@@ -77,6 +84,12 @@ func handle_movement(delta: float):
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 		just_pressed_jump = true
+		
+	if Input.is_action_just_released("ui_accept") and not is_on_floor() and not released_jump and velocity.y < 0:
+		released_jump = true
+		velocity.y *= 0.3
+	elif is_on_floor():
+		released_jump = false
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.

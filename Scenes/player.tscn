@@ -1,13 +1,13 @@
-[gd_scene load_steps=43 format=3 uid="uid://v8vbbsfivhyr"]
+[gd_scene load_steps=44 format=3 uid="uid://v8vbbsfivhyr"]
 
 [ext_resource type="Script" uid="uid://cjsbu15jj55hh" path="res://Scripts/player.gd" id="1_v0iea"]
-[ext_resource type="Texture2D" uid="uid://de1wuohxb2uht" path="res://Assets/Images/Spritesheets/IdleLeft.tres" id="2_6t5aa"]
-[ext_resource type="Texture2D" uid="uid://c7accsv1dqkmm" path="res://Assets/Images/Spritesheets/GrabWallLeft.tres" id="3_3smsa"]
-[ext_resource type="Texture2D" uid="uid://iwuwi43vcl5w" path="res://Assets/Images/Spritesheets/IdleRight.tres" id="3_vgqql"]
-[ext_resource type="Texture2D" uid="uid://ds6kh17uwtg22" path="res://Assets/Images/Spritesheets/GrabWallRight.tres" id="4_8erm5"]
-[ext_resource type="Texture2D" uid="uid://cvw5nwfxxw5co" path="res://Assets/Images/Spritesheets/RunLeft.tres" id="4_vgqql"]
-[ext_resource type="Texture2D" uid="uid://cwaq0kd7cplk" path="res://Assets/Images/Spritesheets/JumpRight.tres" id="4_x3wgy"]
-[ext_resource type="Texture2D" uid="uid://dkqebpieiv8o7" path="res://Assets/Images/Spritesheets/RunRight.tres" id="5_fkybt"]
+[ext_resource type="Texture2D" uid="uid://de1wuohxb2uht" path="res://Assets/Images/Spritesheets/Merlin/Idle/IdleLeft.tres" id="2_6t5aa"]
+[ext_resource type="Texture2D" uid="uid://c7accsv1dqkmm" path="res://Assets/Images/Spritesheets/Merlin/Wall/GrabWallLeft.tres" id="3_3smsa"]
+[ext_resource type="Texture2D" uid="uid://iwuwi43vcl5w" path="res://Assets/Images/Spritesheets/Merlin/Idle/IdleRight.tres" id="3_vgqql"]
+[ext_resource type="Texture2D" uid="uid://ds6kh17uwtg22" path="res://Assets/Images/Spritesheets/Merlin/Wall/GrabWallRight.tres" id="4_8erm5"]
+[ext_resource type="Texture2D" uid="uid://cvw5nwfxxw5co" path="res://Assets/Images/Spritesheets/Merlin/Run/RunLeft.tres" id="4_vgqql"]
+[ext_resource type="Texture2D" uid="uid://cwaq0kd7cplk" path="res://Assets/Images/Spritesheets/Merlin/Jump/JumpRight.tres" id="4_x3wgy"]
+[ext_resource type="Texture2D" uid="uid://dkqebpieiv8o7" path="res://Assets/Images/Spritesheets/Merlin/Run/RunRight.tres" id="5_fkybt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ypfnu"]
 atlas = ExtResource("4_x3wgy")
@@ -284,6 +284,10 @@ fill = 1
 fill_from = Vector2(0.5186916, 0.49532712)
 fill_to = Vector2(0.8457944, 0.1542056)
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8erm5"]
+radius = 8.0
+height = 52.0
+
 [node name="Player" type="CharacterBody2D"]
 z_index = 1
 script = ExtResource("1_v0iea")
@@ -292,17 +296,18 @@ script = ExtResource("1_v0iea")
 texture_filter = 1
 position = Vector2(-3, -5)
 sprite_frames = SubResource("SpriteFrames_gymyn")
-animation = &"GrabWallRight"
+animation = &"JumpRight"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2.005, 2.005)
 position_smoothing_enabled = true
 position_smoothing_speed = 1.0
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(-10, -26, -13, -23, -13, 23, -12, 27, 1, 27, 2, 23, 3, -23, 0, -26)
-
 [node name="PointLight2D" type="PointLight2D" parent="."]
 position = Vector2(-7, -6)
 texture = SubResource("GradientTexture2D_3smsa")
 texture_scale = 2.95
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-5, 1)
+shape = SubResource("CapsuleShape2D_8erm5")

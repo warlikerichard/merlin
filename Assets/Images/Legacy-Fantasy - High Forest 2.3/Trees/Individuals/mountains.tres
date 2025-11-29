@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://icdgrp6ul0ix"]
+
+[ext_resource type="Texture2D" uid="uid://cpobe6yde2cl" path="res://Assets/Images/Legacy-Fantasy - High Forest 2.3/Trees/Background.png" id="1_iaaew"]
+
+[resource]
+atlas = ExtResource("1_iaaew")
+region = Rect2(704, 16, 96, 240)

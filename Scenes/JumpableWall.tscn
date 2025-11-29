@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://do41uidv30waj" path="res://Scripts/jumpable_wall.gd" id="1_ra58l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ra58l"]
-size = Vector2(67, 1065.4337)
+size = Vector2(70.5, 1056.7955)
 
 [node name="JumpableWall" type="StaticBody2D"]
 script = ExtResource("1_ra58l")
