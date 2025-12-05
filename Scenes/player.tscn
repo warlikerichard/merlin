@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://v8vbbsfivhyr"]
+[gd_scene load_steps=46 format=3 uid="uid://v8vbbsfivhyr"]
 
 [ext_resource type="Script" uid="uid://cjsbu15jj55hh" path="res://Scripts/player.gd" id="1_v0iea"]
 [ext_resource type="Texture2D" uid="uid://de1wuohxb2uht" path="res://Assets/Images/Spritesheets/Merlin/Idle/IdleLeft.tres" id="2_6t5aa"]
@@ -8,6 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://cvw5nwfxxw5co" path="res://Assets/Images/Spritesheets/Merlin/Run/RunLeft.tres" id="4_vgqql"]
 [ext_resource type="Texture2D" uid="uid://cwaq0kd7cplk" path="res://Assets/Images/Spritesheets/Merlin/Jump/JumpRight.tres" id="4_x3wgy"]
 [ext_resource type="Texture2D" uid="uid://dkqebpieiv8o7" path="res://Assets/Images/Spritesheets/Merlin/Run/RunRight.tres" id="5_fkybt"]
+[ext_resource type="Script" uid="uid://c0xuider6y6i1" path="res://Scripts/player_FX.gd" id="9_f1ek2"]
+[ext_resource type="Script" uid="uid://k07jec48ylib" path="res://Scripts/wall_jump.gd" id="10_tx1dd"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ypfnu"]
 atlas = ExtResource("4_x3wgy")
@@ -291,12 +293,13 @@ height = 52.0
 [node name="Player" type="CharacterBody2D"]
 z_index = 1
 script = ExtResource("1_v0iea")
+wall_jump_force = 500.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 position = Vector2(-3, -5)
 sprite_frames = SubResource("SpriteFrames_gymyn")
-animation = &"JumpRight"
+animation = &"RunRight"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2.005, 2.005)
@@ -311,3 +314,9 @@ texture_scale = 2.95
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-5, 1)
 shape = SubResource("CapsuleShape2D_8erm5")
+
+[node name="SFX" type="Node2D" parent="."]
+script = ExtResource("9_f1ek2")
+
+[node name="WallJump" type="Node2D" parent="."]
+script = ExtResource("10_tx1dd")

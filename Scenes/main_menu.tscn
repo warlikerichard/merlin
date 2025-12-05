@@ -1,0 +1,51 @@
+[gd_scene load_steps=5 format=3 uid="uid://bc1ie2kkww2bn"]
+
+[ext_resource type="StyleBox" uid="uid://t450ibsq8vvf" path="res://UI/main_menu.tres" id="1_28flt"]
+[ext_resource type="StyleBox" uid="uid://brt03okxfx0rs" path="res://UI/main_menu_hover.tres" id="2_48xlc"]
+[ext_resource type="Texture2D" uid="uid://o3100kjshr1r" path="res://UI/menu_background.png" id="3_1ehe0"]
+[ext_resource type="PackedScene" uid="uid://dei7wpw6v6o10" path="res://Assets/Particles/Fire.tscn" id="4_ce3w2"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -147.0
+offset_top = -52.0
+offset_right = 147.0
+offset_bottom = 52.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.9436815, 0.61227924, 0.19108626, 1)
+theme_override_colors/font_pressed_color = Color(0.93333334, 0.6666667, 0.2627451, 1)
+theme_override_colors/font_hover_color = Color(0.93328816, 0.6665721, 0.2639404, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.93333334, 0.6666667, 0.2627451, 1)
+theme_override_font_sizes/font_size = 35
+theme_override_styles/normal = ExtResource("1_28flt")
+theme_override_styles/hover = ExtResource("2_48xlc")
+text = "Start game"
+
+[node name="MenuBackground" type="Sprite2D" parent="."]
+z_index = -4
+position = Vector2(600, 328)
+scale = Vector2(0.5042878, 0.5042878)
+texture = ExtResource("3_1ehe0")
+
+[node name="CPUParticles2D" parent="." instance=ExtResource("4_ce3w2")]
+z_index = -1
+position = Vector2(620, 576)
+lifetime = 0.6493799999999998
+emission_sphere_radius = 34.445908
+scale_amount_min = 9.29271
+scale_amount_max = 21.13362
+fire_scale = 0.411

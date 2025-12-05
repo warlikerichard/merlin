@@ -1,0 +1,5 @@
+join Merlin (Main) left [animation="Slide From Left" length="1.0"]
+join Morgana right [animation="Slide From Right"]
+Merlin (Main): Opa!
+Merlin (Shy): Tô envergonhado.
+Merlin (Angry): E agora com raiva!

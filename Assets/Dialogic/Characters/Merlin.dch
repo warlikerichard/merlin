@@ -1,0 +1,94 @@
+{
+"@path": "res://addons/dialogic/Resources/character.gd",
+"@subpath": NodePath(""),
+&"_translation_id": "",
+&"color": Color(1, 1, 1, 1),
+&"custom_info": {
+"prefix": "",
+"sound_mood_default": "",
+"sound_moods": {},
+"style": "",
+"suffix": ""
+},
+&"default_portrait": "Main",
+&"description": "",
+&"display_name": "Merlin",
+&"mirror": false,
+&"nicknames": [""],
+&"offset": Vector2(0, 0),
+&"portraits": {
+"Angry": {
+"export_overrides": {
+"image": "\"res://Assets/Dialogic/Portraits/Merlin/merlin bravo.png\""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1,
+"scene": ""
+},
+"Crying1": {
+"export_overrides": {
+"image": "\"res://Assets/Dialogic/Portraits/Merlin/merlin chorando um pouco.png\""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1,
+"scene": ""
+},
+"Crying2": {
+"export_overrides": {
+"image": "\"res://Assets/Dialogic/Portraits/Merlin/merlin chorando lagrima escorrendo.png\""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1,
+"scene": ""
+},
+"Main": {
+"export_overrides": {
+"image": "\"res://Assets/Dialogic/Portraits/Merlin/merlin.png\""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1,
+"scene": ""
+},
+"Sad": {
+"export_overrides": {
+"image": "\"res://Assets/Dialogic/Portraits/Merlin/merlin triste.png\""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1,
+"scene": ""
+},
+"Shy": {
+"export_overrides": {
+"image": "\"res://Assets/Dialogic/Portraits/Merlin/merlin envergonhado.png\""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1,
+"scene": ""
+},
+"SmileBlushing": {
+"export_overrides": {
+"image": "\"res://Assets/Dialogic/Portraits/Merlin/merlin sorrindo blush.png\""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1,
+"scene": ""
+},
+"Smiling": {
+"export_overrides": {
+"image": "\"res://Assets/Dialogic/Portraits/Merlin/merlin sorrindo.png\""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1,
+"scene": ""
+}
+},
+&"scale": 1.0
+}

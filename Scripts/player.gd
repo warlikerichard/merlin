@@ -14,12 +14,15 @@ var just_pressed_jump := false
 var released_jump := false
 var is_wall_jumping := false
 var left_or_right_wall := 0
+var is_in_air := false
+signal just_landed
 
 @onready var animations : AnimatedSprite2D = $AnimatedSprite2D
 
 func _physics_process(delta: float) -> void:
 	handle_movement(delta)
 	handle_animations()
+	handle_wall_jump()
 	move_and_slide()
 
 #Handles animations
@@ -71,6 +74,14 @@ func handle_animations():
 		
 #Handles the movement
 func handle_movement(delta: float):
+	#Checks if just landed
+	if not is_on_floor():
+		is_in_air = true
+	
+	if is_in_air and is_on_floor():
+		is_in_air = false
+		just_landed.emit()
+	
 	if velocity.x < 0:
 		prev_direction = -1.0
 	elif velocity.x > 0:
@@ -85,7 +96,7 @@ func handle_movement(delta: float):
 		velocity.y = JUMP_VELOCITY
 		just_pressed_jump = true
 		
-	if Input.is_action_just_released("ui_accept") and not is_on_floor() and not released_jump and velocity.y < 0:
+	if Input.is_action_just_released("ui_accept") and not released_jump and velocity.y < 0:
 		released_jump = true
 		velocity.y *= 0.3
 	elif is_on_floor():
@@ -102,9 +113,12 @@ func handle_movement(delta: float):
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED/15)
 
-	#Handle wall jumping
+func handle_wall_jump():
+		#Handle wall jumping
 	if is_wall_jumping and Input.is_action_just_pressed("ui_accept"):
+		released_jump = false
+		just_pressed_jump = true
 		if left_or_right_wall < 0:
-			velocity = Vector2(1.0, -1.8).normalized()*wall_jump_force
+			velocity = Vector2(1.0, -3).normalized()*wall_jump_force
 		elif left_or_right_wall > 0:
-			velocity = Vector2(-1.0, -1.8).normalized()*wall_jump_force
+			velocity = Vector2(-1.0, -3).normalized()*wall_jump_force

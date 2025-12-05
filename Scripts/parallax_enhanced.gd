@@ -83,7 +83,14 @@ func process_images_position():
 func process_images_atmosphere():
 	for image in images:
 		var opacity := image.modulate.a
-		image.modulate = Color.SKY_BLUE/(pow(distance, 0.5))
+		#image.modulate = Color.SKY_BLUE/(pow(distance, 0.5))
+		if distance < 1:
+			image.modulate = image.modulate.blend(Color.SKY_BLUE)
+			image.modulate += image.modulate.lightened(1 - pow(distance, 3))
+		else:
+			image.modulate = image.modulate.blend(Color.SKY_BLUE)
+			#image.modulate = image.modulate.darkened(clamp(1 - 1/distance - 0.3, 0, 1))
+			image.modulate = image.modulate.darkened(clamp(1 - 1/pow(distance, 0.3), 0, 1))
 		image.modulate.a = opacity
 
 func process_repeating():
